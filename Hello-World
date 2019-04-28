@@ -1,0 +1,36 @@
+pragma solidity ^0.5.2;
+contract Inheritance{
+        address owner;
+        constructor() public {
+        owner = msg.sender;
+        
+    }
+ modifier onlyOwner(){
+        require(msg.sender == owner);
+        _;
+    }
+   
+
+}
+contract HelloWorld is Inheritance {
+    
+    uint age;
+    string Name;
+    
+        constructor () public {
+            string memory ContractName = "BUILD";
+            
+        }
+    
+    
+    function setValue (uint x, string memory y) onlyOwner public {
+        age = x;
+        Name = y;
+     
+    }
+    function details() public view returns(string memory,uint) {
+        return (Name,age);
+    }
+    
+    
+}
